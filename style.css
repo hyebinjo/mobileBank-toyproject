@@ -1,0 +1,421 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #EEECE5;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-title__hide {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+/* 메인화면 */
+.account-container {
+  padding-top: 56px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 하단 nav */
+nav {
+  width: 100%;
+  height: 76px;
+  background: linear-gradient(163.63deg, #00BDB2 11.35%, #C4E7B8 139.96%);
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 32px 24px 46px;
+}
+
+
+/* 상단 account-header */
+.account-header {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 327px;
+  height: 43px;
+  margin-bottom: 33px;
+}
+
+.account-header .avatar {
+  width:43px;
+  height: 43px;
+  border-radius: 50%;
+}
+
+.account-name {
+  font-size: 18px;
+}
+
+.account-header span {
+  width: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 계좌번호 공간 */
+.account-status {
+  background-color: #ffffff;
+  width: 279px;
+  height: 155px;
+  border-radius: 12px;
+  margin: 0 auto 24px;
+  padding: 14px 0 0 0;
+  text-align: center;
+  position: relative;
+}
+
+.account-number {
+  color: #858585;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.transfer-btn {
+  position: absolute;
+  right: 17px;
+}
+
+.transfer-btn a{
+  color: #000000;
+  font-size: 14px;
+}
+
+.bank-account {
+  text-align: center;
+  font-size: 14px;
+  margin: 16px auto;
+}
+
+.bank-account strong {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.account-progress-container {
+  width: 228px;
+  height: 17px;
+  margin-left: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress {
+  width: 202px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #C4C4C4;
+  margin-top: 7px;
+  position: relative;
+}
+
+.progress .progressing {
+  width: 60%;
+  height: 100%;
+  background-color: #FFDB4C;
+  border-radius: 3px 0 0 3px;
+}
+
+.progress .vertical-bar {
+  width: 8px;
+  height: 17px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: -6px;
+  left: 80%;
+}
+
+.progress .vertical-bar::before {
+  content:"";
+  display: block;
+  width:4px;
+  height: 100%;
+  background-color: #FF5F00;
+  margin: auto;
+  border-radius: 2px;
+}
+
+.link-graph {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.link-graph img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.account-status__text {
+  color: #858585;
+}
+
+/* 광고 배너 부분 */
+.ad-banner {
+  margin-left: 43px;
+  margin-bottom: 21px;
+  font-size: 14px;
+}
+
+.ad-banner a{
+  text-decoration: underline;
+  color:#000000;
+}
+
+/* 계좌 상세 공간 */
+.account-detail {
+  background-color: #F5F5F5;
+  border-radius: 30px 30px 0 0;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+}
+.horizontal-bar {
+  width: 100%;
+  padding-top: 7.15px;
+  padding-bottom: 12px;
+}
+.horizontal-bar::before {
+  display: block;
+  content: "";
+  width: 48px;
+  height: 4px;
+  background-color: #C4C4C4;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.saving-container {
+  margin: 0 37px 17px 30px;
+  width:308px;
+  height: 49px;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+}
+
+.saving-list {
+  display: flex;
+  margin-right: 19px;
+}
+
+.saving {
+  width: 162px;
+  height: 47px;
+  border-radius: 6px;
+  background-color: #DADADA;
+  margin-right: 13px;
+  overflow: hidden;
+  position: relative;
+}
+
+.saving:last-child {
+  margin-right: 0;
+}
+
+.saving-progressing {
+  width: 60%;
+  height: 100%;
+  background-color: #FF5F00;
+}
+
+.saving-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5px;
+  left: 13px;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.saving-info>span {
+  height: 18px;
+}
+
+.add-saving-container {
+  display: flex;
+}
+
+.add-saving-btn {
+  padding: 0;
+  color: #FF5F00;
+  margin-right: 6px;
+}
+
+.add-saving-btn .fas.fa-plus-circle {
+  font-size: 22.5px;
+}
+
+.add-saving-container>span {
+  width: 70px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #FF5F00;
+  padding-top: 2px;
+}
+
+.transaction {
+  width: 302px;
+  margin: 0 auto;
+}
+
+.transaction-status,
+.transaction__item {
+  display: flex;
+  justify-content: space-between;
+  height: 21px;
+  margin-bottom: 8px;
+}
+
+.transaction-date {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.transaction-total {
+  font-size: 14px;
+  font-weight: 500;
+  color: #B4B4B4;
+}
+
+.transaction__list {
+  margin-bottom: 38px;
+}
+
+.transaction__item {
+  color: #444444;
+  font-weight: 300;
+  height: 34px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+.transaction__amount.income {
+  color: #FF5F00;
+}
+
+/* 지출관리 */
+.expense-management {
+  padding-top: 44px;
+  background-color: #ffffff;
+  height: 100vh;
+  display: none;
+}
+
+.expense-management > button {
+  display: block;
+  margin: 0 13px 12px auto;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.expense-management > header > h1 {
+  margin-left: 29px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.expense-management__data-container {
+  padding: 29px 0 0 29px;
+}
+
+.expense-management__data-container h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #444444;
+}
+
+.standard-amount-set {
+  width: 308px;
+  position: relative;
+  margin-bottom: 59px;
+}
+
+.standard-amount-set h2 {
+  margin-top: 4px;
+  margin-bottom: 28px;
+}
+
+.standard-amount {
+  font-size: 24px;
+  font-weight: 500;
+  color:#FF5F00;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.standard-amount-set__bar .progress {
+  width: 100%;
+  height: 9px;
+}
+
+.standard-amount-set__bar .vertical-bar {
+  width: 12px;
+  height: 28px;
+  top: -10px;
+}
+
+.standard-amount-set__bar .vertical-bar::before {
+  width: 8px;
+}
+
+.expense-management__daily-report {
+  margin-bottom: 46px;
+}
+
+.monthly-report__graph {
+  margin-bottom: 18px;
+}
+
+.monthly-report__item {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 33px 21px 50px;
+}
+
+.monthly-report__content {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.monthly-report__amount {
+  font-size: 18px;
+  font-weight: 300;
+  color: #858585;
+}
+
+/* 이체페이지 */
+.transfer-page {
+  display: none;
+}
