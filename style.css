@@ -4,9 +4,9 @@
 }
 
 body {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #EEECE5;
+  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #eeece5;
 }
 
 a {
@@ -29,7 +29,7 @@ button {
 
 /* 메인화면 */
 .account-container {
-  padding-top: 56px;
+  margin-top: 56px;
   height: 100vh;
   overflow: hidden;
 }
@@ -38,7 +38,7 @@ button {
 nav {
   width: 100%;
   height: 76px;
-  background: linear-gradient(163.63deg, #00BDB2 11.35%, #C4E7B8 139.96%);
+  background: linear-gradient(163.63deg, #00bdb2 11.35%, #c4e7b8 139.96%);
   position: fixed;
   bottom: 0;
   z-index: 1;
@@ -49,7 +49,6 @@ nav > ul {
   justify-content: space-between;
   margin: 24px 32px 24px 46px;
 }
-
 
 /* 상단 account-header */
 .account-header {
@@ -63,7 +62,7 @@ nav > ul {
 }
 
 .account-header .avatar {
-  width:43px;
+  width: 43px;
   height: 43px;
   border-radius: 50%;
 }
@@ -102,7 +101,7 @@ nav > ul {
   right: 17px;
 }
 
-.transfer-btn a{
+.transfer-btn a {
   color: #000000;
   font-size: 14px;
 }
@@ -131,7 +130,7 @@ nav > ul {
   width: 202px;
   height: 6px;
   border-radius: 3px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   margin-top: 7px;
   position: relative;
 }
@@ -139,25 +138,25 @@ nav > ul {
 .progress .progressing {
   width: 60%;
   height: 100%;
-  background-color: #FFDB4C;
+  background-color: #ffdb4c;
   border-radius: 3px 0 0 3px;
 }
 
 .progress .vertical-bar {
   width: 8px;
   height: 17px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: absolute;
   top: -6px;
   left: 80%;
 }
 
 .progress .vertical-bar::before {
-  content:"";
+  content: "";
   display: block;
-  width:4px;
+  width: 4px;
   height: 100%;
-  background-color: #FF5F00;
+  background-color: #ff5f00;
   margin: auto;
   border-radius: 2px;
 }
@@ -185,14 +184,14 @@ nav > ul {
   font-size: 14px;
 }
 
-.ad-banner a{
+.ad-banner a {
   text-decoration: underline;
-  color:#000000;
+  color: #000000;
 }
 
 /* 계좌 상세 공간 */
 .account-detail {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border-radius: 30px 30px 0 0;
   height: 100vh;
   overflow-y: auto;
@@ -208,14 +207,14 @@ nav > ul {
   content: "";
   width: 48px;
   height: 4px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   border-radius: 4px;
   margin: 0 auto;
 }
 
 .saving-container {
   margin: 0 37px 17px 30px;
-  width:308px;
+  width: 308px;
   height: 49px;
   overflow-x: auto;
   display: flex;
@@ -231,7 +230,7 @@ nav > ul {
   width: 162px;
   height: 47px;
   border-radius: 6px;
-  background-color: #DADADA;
+  background-color: #dadada;
   margin-right: 13px;
   overflow: hidden;
   position: relative;
@@ -244,7 +243,7 @@ nav > ul {
 .saving-progressing {
   width: 60%;
   height: 100%;
-  background-color: #FF5F00;
+  background-color: #ff5f00;
 }
 
 .saving-info {
@@ -258,7 +257,7 @@ nav > ul {
   font-weight: 500;
 }
 
-.saving-info>span {
+.saving-info > span {
   height: 18px;
 }
 
@@ -268,7 +267,7 @@ nav > ul {
 
 .add-saving-btn {
   padding: 0;
-  color: #FF5F00;
+  color: #ff5f00;
   margin-right: 6px;
 }
 
@@ -276,11 +275,11 @@ nav > ul {
   font-size: 22.5px;
 }
 
-.add-saving-container>span {
+.add-saving-container > span {
   width: 70px;
   font-size: 12px;
   font-weight: 500;
-  color: #FF5F00;
+  color: #ff5f00;
   padding-top: 2px;
 }
 
@@ -305,7 +304,7 @@ nav > ul {
 .transaction-total {
   font-size: 14px;
   font-weight: 500;
-  color: #B4B4B4;
+  color: #b4b4b4;
 }
 
 .transaction__list {
@@ -317,18 +316,20 @@ nav > ul {
   font-weight: 300;
   height: 34px;
   padding-bottom: 7px;
-  border-bottom: 1px solid #DCDCDC;
+  border-bottom: 1px solid #dcdcdc;
 }
 
 .transaction__amount.income {
-  color: #FF5F00;
+  color: #ff5f00;
 }
 
 /* 지출관리 */
 .expense-management {
-  padding-top: 44px;
+  padding: 44px 0 76px;
   background-color: #ffffff;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
   display: none;
 }
 
@@ -369,7 +370,7 @@ nav > ul {
 .standard-amount {
   font-size: 24px;
   font-weight: 500;
-  color:#FF5F00;
+  color: #ff5f00;
   position: absolute;
   top: 0;
   right: 0;
@@ -394,7 +395,17 @@ nav > ul {
   margin-bottom: 46px;
 }
 
+.daily-report-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.daily-report__chart {
+  width: 462px;
+}
+
 .monthly-report__graph {
+  width: 308px;
   margin-bottom: 18px;
 }
 

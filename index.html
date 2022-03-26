@@ -14,6 +14,9 @@
   <!-- fontawsome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
   <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -104,7 +107,7 @@
 
     <!-- 지출관리 -->
     <section class="expense-management">
-      <button>닫기</button>
+      <button class="expense-management__closeBtn">닫기</button>
       <header>
         <h1>지출 관리</h1>
       </header>
@@ -123,17 +126,19 @@
           </div>
         </div>
         <!-- 일간리포트 -->
-        <div   class="expense-management__daily-report">
+        <div class="expense-management__daily-report">
           <h2>일간 리포트</h2>
-          <div class="daily-report__chart">
+          <div class="daily-report-wrapper">
+            <div class="daily-report__chart">
+              <canvas id="dailyBarChart"> </canvas>
+            </div>
           </div>
         </div>
         <!-- 월 지출 패턴 -->
         <div   class="expense-management__monthly-report">
           <h2>6월 지출 패턴</h2>
           <div class="monthly-report__graph">
-            <!-- <span>1,736,500</span>
-            <span>원</span> -->
+            <canvas id="montlyDoughnutChart"></canvas>
           </div>
           <ul class="monthly-report__list">
             <li class="monthly-report__item">
