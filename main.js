@@ -1,12 +1,14 @@
+const today = new Date("2021-09-30");
+const labels = ["주유비", "건강관리비", "외식비", "장보기", "상점"];
+let totalExpense;
 fetch(
-  "https://raw.githubusercontent.com/maddrake220/team_toyproject/main/bankData.json"
+  "https://gist.githubusercontent.com/hyebinjo/910c88016597b5fd3df83e99c8e1f7cc/raw/56a7fe7d5f03349a09c473a3f620871b750ce706/bank.json"
 )
   .then((res) => res.json())
   .then((obj) => obj.bankList)
   .then((bankList) => bankList.reverse())
-  .then((bankList) => LoadTransactionList(bankList));
-
-const today = new Date("2021-10-03");
+  .then((bankList) => LoadTransactionList(bankList))
+  .then((classifiedExpense) => addClassifiedExpense(classifiedExpense, labels));
 
 function LoadTransactionList(bankList) {
   let sum;
@@ -16,12 +18,15 @@ function LoadTransactionList(bankList) {
       addTransactionDay(bankList[i], today);
     }
     sum = addTransactionItem(bankList[i], sum);
+    classifyExpense(bankList[i]);
     if (i >= bankList.length - 1 || bankList[i].date !== bankList[i + 1].date) {
       document.querySelector(
         `#total${bankList[i].date}`
       ).textContent = `${sum}원 지출`;
+      addDailyExpense(bankList[i].date, sum);
     }
   }
+  return classifiedExpense;
 }
 
 function addTransactionDay(obj, today) {
@@ -45,7 +50,7 @@ function addTransactionDay(obj, today) {
   } else if (gap === 1) {
     h3.innerText = "어제";
   } else {
-    h3.innerText = `${gap}일 전`;
+    h3.innerText = `${obj.date}`;
   }
 }
 
@@ -68,6 +73,53 @@ function addTransactionItem(obj, sum) {
   }
   transactionList.appendChild(transactionItem);
   return sum;
+}
+
+// 월간지출패턴 분류
+let classifiedExpense = [0, 0, 0, 0, 0];
+function classifyExpense(listItem) {
+  if (listItem.income === "in") return;
+  switch (listItem.classify) {
+    case "oiling":
+      classifiedExpense[0] += Number(listItem.price);
+      break;
+    case "health":
+      classifiedExpense[1] += Number(listItem.price);
+      break;
+    case "eatout":
+      classifiedExpense[2] += Number(listItem.price);
+      break;
+    case "mart":
+      classifiedExpense[3] += Number(listItem.price);
+      break;
+    case "shopping":
+      classifiedExpense[4] += Number(listItem.price);
+      break;
+    default:
+      break;
+  }
+}
+
+//월 지출패턴 리스트 추가
+function addClassifiedExpense(classifiedExpense, labels) {
+  const ul = document.querySelector(".monthly-report__list");
+  for (let i = 0; i < labels.length; i++) {
+    const li = document.createElement("li");
+    li.setAttribute("class", "monthly-report__item");
+    ul.appendChild(li);
+    li.innerHTML = `
+    <span class="monthly-report__content">${labels[i]}</span>
+    <span class="monthly-report__amount">${classifiedExpense[i]}원</span>
+  `;
+  }
+  return (totalExpense = classifiedExpense.reduce((a, b) => a + b, 0));
+}
+
+//일간 지출내역
+let dailyExpense = new Array(31);
+function addDailyExpense(date, sum) {
+  const day = new Date(date).getDate() - 1;
+  dailyExpense[day] = sum;
 }
 
 // 계좌상세공간 슬라이드
@@ -100,10 +152,7 @@ const dailyData = {
   datasets: [
     {
       backgroundColor: "#38C976",
-      data: [
-        10000, 50000, 20000, 200000, 370000, 300000, 10000, 50000, 20000,
-        200000, 370000, 300000, 10000, 50000, 20000, 200000, 370000, 300000,
-      ],
+      data: dailyExpense,
     },
   ],
 };
@@ -123,26 +172,26 @@ const dailyConfig = {
   },
 };
 
-const myChart = new Chart(
+const dailyChart = new Chart(
   document.getElementById("dailyBarChart"),
   dailyConfig
 );
 
 //지출관리 월 지출패턴
-const montlyData = {
+const monthlyData = {
   datasets: [
     {
-      data: [10, 20, 30],
-      backgroundColor: ["red", "yellow", "blue"],
+      data: classifiedExpense,
+      backgroundColor: ["#BD5B00", "#0057BD", "#00BDB2", "#FEC229", "#C4C4C4"],
       weight: "40",
     },
   ],
-  labels: ["Red", "Yellow", "Blue"],
+  labels: labels,
 };
 
-const montlyConfig = {
+const monthlyConfig = {
   type: "doughnut",
-  data: montlyData,
+  data: monthlyData,
   options: {
     animation: {
       duration: 0,
@@ -162,7 +211,7 @@ const montlyConfig = {
         const height = chart.height;
         const ctx = chart.ctx;
 
-        const text = "1,000,000 원";
+        const text = `${totalExpense}원`;
         ctx.font = "24" + "px " + "Noto Sans CJK KR";
         ctx.fillStyle = "#000000";
 
@@ -175,7 +224,7 @@ const montlyConfig = {
   ],
 };
 
-const myChart2 = new Chart(
-  document.getElementById("montlyDoughnutChart"),
-  montlyConfig
+const monthlyChart = new Chart(
+  document.getElementById("monthlyDoughnutChart"),
+  monthlyConfig
 );
