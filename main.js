@@ -128,6 +128,12 @@ bar.addEventListener("touchmove", (e) => {
   e.preventDefault();
   e.target.parentNode.style.top = `${e.touches[0].clientY}px`;
 });
+bar.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  if(e.target.getBoundingClientRect().top >= 56 && e.target.getBoundingClientRect().top <= 352) return;
+  else if (e.target.getBoundingClientRect().top < 56) e.target.parentNode.style.top = '56px';
+  else e.target.parentNode.style.top = '352px';
+});
 
 // 지출관리 화면 열기
 const graphBtn = document.querySelector(".link-graph");
