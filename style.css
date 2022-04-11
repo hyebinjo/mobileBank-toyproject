@@ -418,7 +418,7 @@ nav > ul {
 .monthly-report__item {
   display: flex;
   justify-content: space-between;
-  margin: 0 33px 21px 50px;
+  margin: 0 33px 21px 10px;
 }
 
 .monthly-report__content {

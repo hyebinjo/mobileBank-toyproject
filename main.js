@@ -1,5 +1,6 @@
 const today = new Date("2021-09-30");
 const labels = ["주유비", "건강관리비", "외식비", "장보기", "상점"];
+const labelColor = ["#BD5B00", "#0057BD", "#00BDB2", "#FEC229", "#C4C4C4"];
 let totalExpense;
 fetch(
   "https://gist.githubusercontent.com/hyebinjo/910c88016597b5fd3df83e99c8e1f7cc/raw/56a7fe7d5f03349a09c473a3f620871b750ce706/bank.json"
@@ -22,7 +23,7 @@ function LoadTransactionList(bankList) {
     if (i >= bankList.length - 1 || bankList[i].date !== bankList[i + 1].date) {
       document.querySelector(
         `#total${bankList[i].date}`
-      ).textContent = `${sum}원 지출`;
+      ).textContent = `${sum.toLocaleString()}원 지출`;
       addDailyExpense(bankList[i].date, sum);
     }
   }
@@ -60,7 +61,7 @@ function addTransactionItem(obj, sum) {
   transactionItem.setAttribute("class", "transaction__item");
   transactionItem.innerHTML = `
   <span class="transaction__content">${obj.history}</span>
-  <span class="transaction__amount">${obj.price}</span>
+  <span class="transaction__amount">${obj.price.toLocaleString()}</span>
   `;
   const amount = transactionItem.querySelector(".transaction__amount");
   if (obj.income === "in") {
@@ -69,7 +70,7 @@ function addTransactionItem(obj, sum) {
     amount.textContent = `+${text}`;
   } else if (obj.income === "out") {
     amount.classList.add("outcome");
-    sum += Number(amount.textContent);
+    sum += Number(obj.price);
   }
   transactionList.appendChild(transactionItem);
   return sum;
@@ -108,8 +109,8 @@ function addClassifiedExpense(classifiedExpense, labels) {
     li.setAttribute("class", "monthly-report__item");
     ul.appendChild(li);
     li.innerHTML = `
-    <span class="monthly-report__content">${labels[i]}</span>
-    <span class="monthly-report__amount">${classifiedExpense[i]}원</span>
+    <span class="monthly-report__content"><strong style="color: ${labelColor[i]};">●${`  `}</strong>${labels[i]}</span>
+    <span class="monthly-report__amount">${classifiedExpense[i].toLocaleString()}원</span>
   `;
   }
   return (totalExpense = classifiedExpense.reduce((a, b) => a + b, 0));
@@ -188,7 +189,7 @@ const monthlyData = {
   datasets: [
     {
       data: classifiedExpense,
-      backgroundColor: ["#BD5B00", "#0057BD", "#00BDB2", "#FEC229", "#C4C4C4"],
+      backgroundColor: labelColor,
       weight: "40",
     },
   ],
@@ -217,7 +218,7 @@ const monthlyConfig = {
         const height = chart.height;
         const ctx = chart.ctx;
 
-        const text = `${totalExpense}원`;
+        const text = `${totalExpense.toLocaleString()}원`;
         ctx.font = "24" + "px " + "Noto Sans CJK KR";
         ctx.fillStyle = "#000000";
 
