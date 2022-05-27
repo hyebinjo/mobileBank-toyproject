@@ -41,9 +41,7 @@ export default class TransactionList {
         <div class="transaction">
           <div class="transaction-status">
             <h3 class="transaction-date">${this.getDay(item)}</h3>
-            <span class="transaction-total" id="total${item.date}" data-date=${
-          item.date
-        }>
+            <span class="transaction-total" id="total${item.date}">
               ${Number(this.dayExpense[item.date]).toLocaleString()}원 지출
             </span>
           </div>
@@ -90,5 +88,17 @@ export default class TransactionList {
         e.target.parentNode.style.top = "56px";
       else e.target.parentNode.style.top = "352px";
     });
+  }
+
+  getDailyExpenseData() {
+    const dailyExpenseArr = new Array(31);
+    for (let i = 0; i < dailyExpenseArr.length; i++) {
+      dailyExpenseArr[i] = 0;
+    }
+    this.data.reverse().forEach((item) => {
+      if (item.income === "in") return;
+      dailyExpenseArr[new Date(item.date).getDate() - 1] += item.price;
+    });
+    return dailyExpenseArr;
   }
 }
