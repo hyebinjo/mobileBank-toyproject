@@ -324,7 +324,7 @@ nav > ul {
   border-bottom: 1px solid #dcdcdc;
 }
 
-.transaction__amount.income {
+.transaction__amount.in {
   color: #ff5f00;
 }
 
