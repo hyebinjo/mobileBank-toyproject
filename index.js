@@ -1,6 +1,8 @@
 import fetchData from "./fetchData.js";
 import TransactionList from "./list.js";
 import dailyData from "./dailyReport.js";
+import monthlyData from "./monthlyData.js";
+import monthlyDataList from "./monthlyDataList.js";
 
 const getBankList = async () => {
   const bankList = await fetchData(
@@ -19,10 +21,21 @@ const render = async () => {
   list.addDragEventListener();
 
   //지출관리 일간리포트
+  const dailyExpenseArr = list.getDailyExpenseData();
   const dailyChart = new Chart(
     document.getElementById("dailyBarChart"),
-    dailyData(list.getDailyExpenseData())
+    dailyData(dailyExpenseArr)
   );
+
+  //지출관리 월 지출패턴
+  const labels = ["주유비", "건강관리비", "외식비", "장보기", "상점"];
+  const labelColor = ["#BD5B00", "#0057BD", "#00BDB2", "#FEC229", "#C4C4C4"];
+  const classifiedExpenseArr = list.getClassifiedExpenseData();
+  const monthlyChart = new Chart(
+    document.getElementById("monthlyDoughnutChart"),
+    monthlyData(classifiedExpenseArr, labels, labelColor)
+  );
+  monthlyDataList(classifiedExpenseArr, labels, labelColor);
 };
 render();
 

@@ -2,6 +2,7 @@ export default class TransactionList {
   constructor(data, listContainer) {
     this.data = data;
     this.dayExpense;
+    this.classifiedExpense = [0, 0, 0, 0, 0];
     this.listContainer = listContainer;
   }
 
@@ -100,5 +101,33 @@ export default class TransactionList {
       dailyExpenseArr[new Date(item.date).getDate() - 1] += item.price;
     });
     return dailyExpenseArr;
+  }
+
+  classifyExpense(item) {
+    if (item.income === "in") return;
+    switch (item.classify) {
+      case "oiling":
+        this.classifiedExpense[0] += Number(item.price);
+        break;
+      case "health":
+        this.classifiedExpense[1] += Number(item.price);
+        break;
+      case "eatout":
+        this.classifiedExpense[2] += Number(item.price);
+        break;
+      case "mart":
+        this.classifiedExpense[3] += Number(item.price);
+        break;
+      case "shopping":
+        this.classifiedExpense[4] += Number(item.price);
+        break;
+      default:
+        break;
+    }
+  }
+
+  getClassifiedExpenseData() {
+    this.data.forEach((item) => this.classifyExpense(item));
+    return this.classifiedExpense;
   }
 }
