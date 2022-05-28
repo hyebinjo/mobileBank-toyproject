@@ -1,152 +1,173 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- link google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Noto+Sans+KR:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- link google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- fontawsome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
 
-  <!-- fontawsome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
-  <!-- chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-
-  <link rel="stylesheet" href="./style.css">
-</head>
-
-<script src="./main.js" defer></script>
-
-<body>
-  <div class="wrap">
-
-    <!-- 하단 nav -->
-    <nav>
-      <h2 class="section-title__hide"></h2>
-      <ul>
-        <li><a href="#"><img src="./images/icons/home.png" alt=""></a></li>
-        <li><a href="#"><img src="./images/icons/arrow.png" alt=""></a></li>
-        <li><a href="#"><img src="./images/icons/chat.png" alt=""></a></li>
-        <li><a href="#"><img src="./images/icons/index.png" alt=""></a></li>
-      </ul>
-    </nav>
-
-    <!-- 메인 화면 -->
-    <section class="account-container">
-
-      <!--상단에 프로필사진, 생활비, 아이콘 2개-->
-      <header class="account-header">
-        <div class="avatar">
-          <img src="./images/avatar/avatar1.png" alt="profile-image">
-        </div>
-        <h1 class="account-name">생활비</h1>
-        <span>
-          <a href="#"><img src="./images/icons/간편결제아이콘.png" alt="스캔 아이콘"></a>
-          <a href="#"><img src="./images/icons/검색아이콘.png" alt="찾기 아이콘"></a>
-        </span>
-      </header>
-
-      <!-- 계좌번호 공간 -->
-      <section class="account-status">
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./index.js" defer></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <!-- 하단 nav -->
+      <nav>
         <h2 class="section-title__hide"></h2>
-        <strong class="account-number">355-583725-78773</strong>
-        <span class="transfer-btn"><a href="#">이체</a></span>
-        <div class="bank-account"><strong>1,240,000</strong>원</div>
-        
-        <div class="account-progress-container">
-          <div class="progress"> 
-            <div class="progressing"></div> 
-            <span class="vertical-bar"></span> 
-          </div> 
-          <a href="#" class="link-graph"><img src="./images/icons/graph-btn.png" alt="지출관리 가기"></a>
-        </div>
-        <p class="account-status__text"><span>5</span>일 동안 <span>210,000</span>원 남음</p>
-      </section>
+        <ul>
+          <li>
+            <a href="#"><img src="./images/icons/home.png" alt="" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./images/icons/arrow.png" alt="" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./images/icons/chat.png" alt="" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./images/icons/index.png" alt="" /></a>
+          </li>
+        </ul>
+      </nav>
 
-      <!--광고 베너 부분-->
-      <aside class="ad-banner">
-        <p class="ad-text">지금 낮은 이자로 생활대출을 신청하세요!<a href="javescript:void(0)">Go</a></p>
-      </aside>
+      <!-- 메인 화면 -->
+      <section class="account-container">
+        <!--상단에 프로필사진, 생활비, 아이콘 2개-->
+        <header class="account-header">
+          <div class="avatar">
+            <img src="./images/avatar/avatar1.png" alt="profile-image" />
+          </div>
+          <h1 class="account-name">생활비</h1>
+          <span>
+            <a href="#"
+              ><img src="./images/icons/간편결제아이콘.png" alt="스캔 아이콘"
+            /></a>
+            <a href="#"
+              ><img src="./images/icons/검색아이콘.png" alt="찾기 아이콘"
+            /></a>
+          </span>
+        </header>
 
-      <!-- 계좌 상세 공간 -->
-      <section class="account-detail">
-        <h2 class="section-title__hide"></h2>
-        <div class="horizontal-bar"></div>
-        <!-- 저금통 내역 -->
-        <div class="saving-container">
-          <div class="saving-list">
-            <div class="saving">
-              <div class="saving-progressing"></div>
-              <div class="saving-info">
-                <span class="saving-name">여행 가자!</span>
-                <span class="saved-money">842,200원</span>
+        <!-- 계좌번호 공간 -->
+        <section class="account-status">
+          <h2 class="section-title__hide"></h2>
+          <strong class="account-number">355-583725-78773</strong>
+          <span class="transfer-btn"><a href="#">이체</a></span>
+          <div class="bank-account"><strong>1,240,000</strong>원</div>
+
+          <div class="account-progress-container">
+            <div class="progress">
+              <div class="progressing"></div>
+              <span class="vertical-bar"></span>
+            </div>
+            <a href="#" class="link-graph"
+              ><img src="./images/icons/graph-btn.png" alt="지출관리 가기"
+            /></a>
+          </div>
+          <p class="account-status__text">
+            <span>5</span>일 동안 <span>210,000</span>원 남음
+          </p>
+        </section>
+
+        <!--광고 베너 부분-->
+        <aside class="ad-banner">
+          <p class="ad-text">
+            지금 낮은 이자로 생활대출을 신청하세요!<a href="javescript:void(0)"
+              >Go</a
+            >
+          </p>
+        </aside>
+
+        <!-- 계좌 상세 공간 -->
+        <section class="account-detail">
+          <h2 class="section-title__hide"></h2>
+          <div class="horizontal-bar"></div>
+          <!-- 저금통 내역 -->
+          <div class="saving-container">
+            <div class="saving-list">
+              <div class="saving">
+                <div class="saving-progressing"></div>
+                <div class="saving-info">
+                  <span class="saving-name">여행 가자!</span>
+                  <span class="saved-money">842,200원</span>
+                </div>
+              </div>
+              <div class="saving">
+                <div class="saving-progressing"></div>
+                <div class="saving-info">
+                  <span class="saving-name">냉장고사기</span>
+                  <span class="saved-money">142,200원</span>
+                </div>
               </div>
             </div>
-            <div class="saving">
-              <div class="saving-progressing"></div>
-              <div class="saving-info">
-                <span class="saving-name">냉장고사기</span>
-                <span class="saved-money">142,200원</span>
+            <div class="add-saving-container">
+              <button class="add-saving-btn">
+                <i class="fas fa-plus-circle"></i>
+              </button>
+              <span>저금통 만들기</span>
+            </div>
+          </div>
+          <!-- 지출내역 -->
+        </section>
+      </section>
+
+      <!-- 지출관리 -->
+      <section class="expense-management">
+        <button class="expense-management__closeBtn">닫기</button>
+        <header>
+          <h1>지출 관리</h1>
+        </header>
+        <div class="expense-management__data-container">
+          <!-- 기준금액설정 -->
+          <div class="standard-amount-set">
+            <div>
+              <h2>기준금액설정</h2>
+              <div class="standard-amount">2,100,000원</div>
+            </div>
+            <div class="standard-amount-set__bar">
+              <div class="progress">
+                <div class="progressing"></div>
+                <span class="vertical-bar"></span>
               </div>
             </div>
           </div>
-          <div class="add-saving-container">
-            <button class="add-saving-btn"><i class="fas fa-plus-circle"></i></button>
-            <span>저금통 만들기</span>
-          </div>
-        </div>
-        <!-- 지출내역 -->
-        
-      </section>
-    </section>
-
-    <!-- 지출관리 -->
-    <section class="expense-management">
-      <button class="expense-management__closeBtn">닫기</button>
-      <header>
-        <h1>지출 관리</h1>
-      </header>
-      <div class="expense-management__data-container">
-        <!-- 기준금액설정 -->
-        <div class="standard-amount-set">
-          <div>
-            <h2>기준금액설정</h2>
-            <div class="standard-amount">2,100,000원</div>
-          </div>
-          <div class="standard-amount-set__bar">
-            <div class="progress"> 
-              <div class="progressing"></div> 
-              <span class="vertical-bar"></span> 
-            </div> 
-          </div>
-        </div>
-        <!-- 일간리포트 -->
-        <div class="expense-management__daily-report">
-          <h2>일간 리포트</h2>
-          <div class="daily-report-wrapper">
-            <div class="daily-report__chart">
-              <canvas id="dailyBarChart"> </canvas>
+          <!-- 일간리포트 -->
+          <div class="expense-management__daily-report">
+            <h2>일간 리포트</h2>
+            <div class="daily-report-wrapper">
+              <div class="daily-report__chart">
+                <canvas id="dailyBarChart"> </canvas>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- 월 지출 패턴 -->
-        <div   class="expense-management__monthly-report">
-          <h2>9월 지출 패턴</h2>
-          <div class="monthly-report__graph">
-            <canvas id="monthlyDoughnutChart"></canvas>
+          <!-- 월 지출 패턴 -->
+          <div class="expense-management__monthly-report">
+            <h2>9월 지출 패턴</h2>
+            <div class="monthly-report__graph">
+              <canvas id="monthlyDoughnutChart"></canvas>
+            </div>
+            <ul class="monthly-report__list"></ul>
           </div>
-          <ul class="monthly-report__list">
-          </ul>
         </div>
-      </div>
-    </section>
-
-  </div>
-</body>
-
+      </section>
+    </div>
+  </body>
 </html>
